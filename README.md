@@ -428,9 +428,13 @@ Tu réponds aux questions suivantes (les plus fréquentes) :
 # ✅ **À la fin des 3h, les apprenants doivent avoir :**
 
 ✅ 4 pages : home / ajouter_formation / benchmark / details
+
 ✅ Le header réutilisable en place
+
 ✅ La navigation fonctionnelle
+
 ✅ Une carte formation propre
+
 ✅ Les bases de Design, Workflow, Data, Styles
 
 ---
