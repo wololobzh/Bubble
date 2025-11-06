@@ -56,12 +56,17 @@ Créer un projet “Benchmark Demo”.
 * Comprendre l’intérêt du no-code/low-code
 
 Le no-code / low-code sert à :
+
 ➜ Construire plus vite
+
 ➜ Moins cher
+
 ➜ En impliquant plus de monde
+
 ➜ Tout en gardant la possibilité d’évoluer ensuite
 
 Par contre
+
 ❌ Dépendance à la plateforme
 
 ❌ Liberté technique limitée
@@ -76,15 +81,16 @@ Par contre
 
 ❌ Demande tout de même des compétences
 
-
 * Découvrir Bubble
 
 Je recommande fortement : BUBBLE
+
 Car :
-- c’est plus complet que Airtable
-- plus simple qu’OutSystems
-- entièrement web (contrairement à certaines fonctionnalités PowerApps)
-- parfait pour construire une vraie application avec front + logique + API
+
+* c’est plus complet que Airtable
+* plus simple qu’OutSystems
+* entièrement web (contrairement à certaines fonctionnalités PowerApps)
+* parfait pour construire une vraie application avec front + logique + API
 
 ### 🎤 À dire (exemple)
 
@@ -112,18 +118,6 @@ Noter les idées au tableau pour structurer la base de données ensuite.
 
 ## 🎯 Objectifs
 
-* Utiliser l’éditeur (Design, Workflow, Data)
-* Créer les premières pages
-
-Bien sûr ! Voici **exactement ce que tu dois faire, dire et faire faire** durant la **Séquence 2 – Première prise en main (3h)**.
-Tu peux suivre ça minute par minute : c’est un plan **clé en main** pour ton animation pédagogique.
-
----
-
-### ✅ **🟦 Séquence 2 – Première prise en main (3h)**
-
-#### 🎯 Objectifs
-
 * Comprendre comment fonctionne l’éditeur Bubble
 * Découvrir Design, Workflow, Data
 * Créer les 3 pages du projet fil rouge
@@ -132,11 +126,11 @@ Tu peux suivre ça minute par minute : c’est un plan **clé en main** pour ton
 
 ---
 
-#### ✅ ✅ ✅ **CE QUE TU DOIS FAIRE EXACTEMENT**
+## ✅ ✅ ✅ **CE QUE TU DOIS FAIRE EXACTEMENT**
 
 ---
 
-#### ✅ **1) Introduction (5 min)**
+### **1) Introduction (5 min)**
 
 🎤 À dire :
 
@@ -146,17 +140,22 @@ Ensuite, ouvre Bubble et montre en live.
 
 ---
 
-#### ✅ **2) Présenter l’interface Bubble (20 min)**
+### **2) Présenter l’interface Bubble (20 min)**
 
 🎤 Tu expliques en montrant ton écran :
 
 #### 🔹 À montrer :
 
 ✅ `Design` → interface de création visuelle
+
 ✅ `Workflow` → automatisations
+
 ✅ `Data` → base de données
+
 ✅ `Styles` → apparence globale
+
 ✅ `Plugins` → API Connector, etc.
+
 ✅ `Settings` → versions, SEO, domaine
 
 #### 🎤 Phrase simple :
@@ -165,7 +164,7 @@ Ensuite, ouvre Bubble et montre en live.
 
 ---
 
-#### ✅ **3) Démonstration guidée : créer une nouvelle page (10 min)**
+### **3) Démonstration guidée : créer une nouvelle page (10 min)**
 
 Tu leur montres comment faire pour *une* page :
 
@@ -176,26 +175,29 @@ Puis tu leur demandes de répéter pour les 3 pages suivantes.
 
 ---
 
-#### ✅ **4) TP Formateur : Création des pages du projet (20 min)**
+### **4) TP Formateur : Création des pages du projet (20 min)**
 
 Tu leur demandes de créer les pages suivantes :
 
 ✅ Page 1 : **home**
+
 ✅ Page 2 : **ajouter_formation**
+
 ✅ Page 3 : **benchmark**
+
 ✅ Page 4 : **details_formation** (option pour plus tard)
 
 Une fois les pages créées, tu fais le tour pour vérifier.
 
 ---
 
-#### ✅ **5) Créer un en-tête (header) réutilisable (20 min)**
+### **5) Créer un en-tête (header) réutilisable (20 min)**
 
 🎤 À dire :
 
 > “On va créer un menu commun à toutes les pages grâce aux éléments réutilisables.”
 
-##### Étapes :
+#### Étapes :
 
 1. Bubble → *New reusable element*
 2. Nom : `header`
@@ -209,7 +211,7 @@ Une fois les pages créées, tu fais le tour pour vérifier.
 
 ---
 
-# ✅ **6) TP : Mise en place de la navigation (20 min)**
+### **6) TP : Mise en place de la navigation (20 min)**
 
 📌 Consigne :
 
@@ -224,11 +226,11 @@ Une fois les pages créées, tu fais le tour pour vérifier.
 
 ---
 
-# ✅ **7) Pause ou micro-exercice (5 min)**
+### **7) Pause ou micro-exercice (5 min)**
 
 ---
 
-# ✅ **8) Démo : Créer une carte “Formation” (20 min)**
+### **8) Démo : Créer une carte “Formation” (20 min)**
 
 🎤 À dire :
 
@@ -252,7 +254,7 @@ Tu expliques :
 
 ---
 
-# ✅ **9) TP : Chaque apprenant crée sa carte (25 min)**
+### **9) TP : Chaque apprenant crée sa carte (25 min)**
 
 📌 Consignes précises :
 
@@ -271,7 +273,7 @@ Tu expliques :
 
 ---
 
-# ✅ **10) Initiation rapide au responsive (10 min)**
+### **10) Initiation rapide au responsive (10 min)**
 
 🎤 À dire :
 
@@ -285,7 +287,7 @@ Tu montres :
 
 ---
 
-# ✅ **11) Mise en commun + questions (15 min)**
+### **11) Mise en commun + questions (15 min)**
 
 Tu réponds aux questions suivantes (les plus fréquentes) :
 
@@ -326,7 +328,6 @@ Si tu veux, je peux aussi te livrer :
 ✅ une **fiche formateur** PDF prête à imprimer
 
 Tu veux l’un d’eux ?
-
 
 ---
 
