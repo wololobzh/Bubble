@@ -453,15 +453,6 @@ Tu réponds aux questions suivantes (les plus fréquentes) :
 
 ---
 
-Si tu veux, je peux aussi te livrer :
-✅ un **script mot-à-mot** de ce que tu dois dire
-✅ une **checklist de validation par apprenant**
-✅ une **fiche formateur** PDF prête à imprimer
-
-Tu veux l’un d’eux ?
-
----
-
 ## ✅ **TP 1 – Créer la structure de l’application (45 min)**
 
 ### 📌 Consignes
@@ -502,8 +493,11 @@ Les apprenants oublient souvent :
 ### 💡Astuce
 
 Insister sur :
+
 ✅ l’alignement
+
 ✅ le responsive simple
+
 ✅ l’utilisation des styles pour garder un thème cohérent
 
 ---
@@ -573,10 +567,15 @@ Créer “Note” :
 > “Un formulaire n’est rien sans un workflow.”
 
 Créer :
+
 ✅ Input texte
+
 ✅ Input nombre
+
 ✅ Dropdown format
+
 ✅ Multi-line description
+
 ✅ Bouton “Créer formation”
 
 Workflow :
@@ -618,9 +617,13 @@ Créer un **Repeating Group** :
 ## ✅ **TP 7 – Moteur de recherche complet**
 
 Ajouter :
+
 ✅ Input “Recherche”
+
 ✅ Dropdown “Organisme”
+
 ✅ Slider “Budget max”
+
 ✅ Dropdown “Format”
 
 Repeating group →
@@ -675,10 +678,15 @@ Préparation :
 ## ✅ **TP 9 – Mise en production**
 
 Actions :
+
 ✅ Preview
+
 ✅ Debug mode
+
 ✅ Privacy rules
+
 ✅ Publish
+
 ✅ Tester le lien public
 
 ---
@@ -697,18 +705,11 @@ Actions :
 À la fin de ce module, les apprenants auront réalisé :
 
 ✅ Une vraie base de données
+
 ✅ Une app web complète
+
 ✅ Un moteur de recherche multifacteurs
+
 ✅ Une intégration API
+
 ✅ Un site web publié en production
-
----
-
-# ✅ **Souhaites-tu maintenant ?**
-
-✅ **La version diaporama (Slides)**
-✅ **Un document PDF “pas-à-pas apprenant”**
-✅ **La version TP MSPR (évaluation finale + barème)**
-✅ **Le maquettage visuel complet (wireframes)**
-
-Dis-moi ce que tu veux que je génère !
