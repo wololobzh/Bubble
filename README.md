@@ -55,43 +55,43 @@ Créer un projet “Benchmark Demo”.
 
 * Comprendre l’intérêt du no-code/low-code
 
-Le no-code / low-code sert à :
-
-➜ Construire plus vite
-
-➜ Moins cher
-
-➜ En impliquant plus de monde
-
-➜ Tout en gardant la possibilité d’évoluer ensuite
-
-Par contre
-
-❌ Dépendance à la plateforme
-
-❌ Liberté technique limitée
-
-❌ Ralentissements / limitations avec la complexité
-
-❌ Coût qui peut augmenter avec les utilisateurs
-
-❌ Intégrations parfois difficiles
-
-❌ Maintenance visuelle complexe
-
-❌ Demande tout de même des compétences
+> Le no-code / low-code sert à :
+> 
+> ➜ Construire plus vite
+> 
+> ➜ Moins cher
+> 
+> ➜ En impliquant plus de monde
+> 
+> ➜ Tout en gardant la possibilité d’évoluer ensuite
+> 
+> Par contre
+> 
+> ❌ Dépendance à la plateforme
+> 
+> ❌ Liberté technique limitée
+> 
+> ❌ Ralentissements / limitations avec la complexité
+> 
+> ❌ Coût qui peut augmenter avec les utilisateurs
+> 
+> ❌ Intégrations parfois difficiles
+> 
+> ❌ Maintenance visuelle complexe
+> 
+> ❌ Demande tout de même des compétences
 
 * Découvrir Bubble
 
-Je recommande fortement : BUBBLE
-
-Car :
-
-* c’est plus complet que Airtable
-* plus simple qu’OutSystems
-* entièrement web (contrairement à certaines fonctionnalités PowerApps)
-* parfait pour construire une vraie application avec front + logique + API
-
+> Je recommande fortement : BUBBLE
+> 
+> Car :
+> 
+> * c’est plus complet que Airtable
+> * plus simple qu’OutSystems
+> * entièrement web (contrairement à certaines fonctionnalités PowerApps)
+> * parfait pour construire une vraie application avec front + logique + API
+> 
 ### 🎤 À dire (exemple)
 
 > “Aujourd’hui, on va développer une application web complète, sans coder, mais en appliquant les concepts fondamentaux du développement logiciel.”
