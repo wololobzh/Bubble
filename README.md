@@ -102,7 +102,7 @@ Créer un projet “Benchmark Demo”.
 2. Montrer le dashboard
 3. Montrer un exemple d’app Bubble existante (Bubble Showcase)
 
-### ✅ Activité : “Définir un benchmark”
+### ✅ Activité : “Définir un benchmark des formation en informatique en Bretagne”
 
 Demander :
 
