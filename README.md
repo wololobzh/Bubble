@@ -30,11 +30,17 @@ Créer un projet “Benchmark Demo”.
 À la fin des 14h, l’apprenant doit savoir :
 
 ✅ concevoir une base de données
+
 ✅ créer des pages & UI professionnelles
+
 ✅ créer des workflows
+
 ✅ intégrer une API
+
 ✅ filtrer et trier des données
+
 ✅ publier une application Bubble
+
 ✅ réaliser un benchmark de formations
 
 ---
