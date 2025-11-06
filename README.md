@@ -63,11 +63,17 @@ Le no-code / low-code sert à :
 
 Par contre
 ❌ Dépendance à la plateforme
+
 ❌ Liberté technique limitée
+
 ❌ Ralentissements / limitations avec la complexité
+
 ❌ Coût qui peut augmenter avec les utilisateurs
+
 ❌ Intégrations parfois difficiles
+
 ❌ Maintenance visuelle complexe
+
 ❌ Demande tout de même des compétences
 
 
