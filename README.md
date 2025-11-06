@@ -230,27 +230,154 @@ Une fois les pages créées, tu fais le tour pour vérifier.
 
 ---
 
-### **8) Démo : Créer une carte “Formation” (20 min)**
+Bien sûr ! Voici une **version développée, détaillée, clé-en-main**, avec ce que tu dois *dire*, *faire* et *montrer* exactement pendant la démo.
+Tu peux littéralement suivre ce script en classe.
 
-🎤 À dire :
+---
 
-> “Nous allons créer la carte visuelle d’une formation, que nous réutiliserons plus tard dans le listing.”
+### **8) Démo détaillée – Créer une carte “Formation” (20 min)**
 
-### Sur ta page `benchmark` :
+*Objectif : créer une carte propre, réutilisable et adaptée au futur listing des formations.*
 
-Tu crées :
+---
 
-* un **Group** rectangulaire
-* un **titre** (Text)
-* un **organisme** (Text)
-* un **prix** (Text)
-* un **bouton** “Voir détails”
+#### ✅ **🎤 Introduction (à dire – 15 secondes)**
 
-Tu expliques :
-✅ utilisation des groupes
-✅ nombre minimal d’éléments
-✅ importance de l’alignement
-✅ aspect reusable de la carte
+> “Nous allons maintenant créer la carte visuelle d’une formation.
+> Cette carte sera utilisée pour afficher les résultats dans le benchmark.
+> On va y mettre les infos principales : le titre, l’organisme, le prix et un bouton ‘Voir détails’.”
+
+---
+
+#### ✅ **1) Création du Group principal (5 minutes)**
+
+📌 **Ce que tu fais (à l’écran)**
+
+1. Aller sur la page **benchmark**
+2. Cliquer **Add container → Group**
+3. Dessiner un rectangle (environ 300px de large × 180px de haut)
+4. Dans les propriétés du Group :
+
+   * **Type of content : Formation** (très important pour plus tard)
+   * Background color : #FFFFFF
+   * Border radius : 12
+   * Shadow légère (optionnelle)
+   * Layout : **column**
+   * Alignement : **center**
+
+🎤 **Ce que tu dis pendant que tu le fais :**
+
+> “Un Group est le conteneur principal d’une carte.
+> C’est comme la ‘boîte’ qui contient toutes les informations de la formation.
+> On utilise un Group parce qu’une carte représente un objet : ici, une formation.”
+
+✅ **Points pédagogiques à insister :**
+
+* Le Group = 1 unité de donnée
+* Toujours organiser la mise en page en colonnes ou lignes
+* Ne pas laisser du ‘free layout’ partout
+
+---
+
+#### ✅ **2) Ajouter le titre de la formation (4 minutes)**
+
+📌 **Ce que tu fais**
+
+1. Dans le Group → Add element → **Text**
+2. Taper un texte temporaire : **“Titre de la formation”**
+3. Style : H3 ou Bold 18–20px
+4. Alignement : center
+5. Largeur : “Fit width” ou 80% du group
+
+🎤 Ce que tu dis :
+
+> “Le titre est l’élément le plus important. On le met en premier, en gros, centré.
+> C’est cette structure que Bubble remplacera plus tard par les données réelles.”
+
+✅ **Astuce :**
+Ne mets pas de données dynamiques maintenant, car la base n’existe pas encore. On le fera plus tard.
+
+---
+
+#### ✅ **3) Ajouter l’organisme (2 minutes)**
+
+📌 **Ce que tu fais**
+
+* Ajouter un élément Text sous le titre
+* Écrire : “Organisme”
+* Style plus discret (12–14px, gris)
+
+🎤 Ce que tu dis :
+
+> “On ajoute l’organisme qui propose la formation.
+> Il doit être visible mais moins mis en avant que le titre.”
+
+---
+
+#### ✅ **4) Ajouter le prix (2 minutes)**
+
+📌 **Ce que tu fais**
+
+* Ajouter un Text sous l’organisme
+* Écrire : “Prix : 2100 €”
+* Mettre en bold léger (15–16px)
+
+🎤 Ce que tu dis :
+
+> “On place le prix juste après.
+> Plus tard, cette valeur sera dynamique, issue de la base de données.”
+
+✅ **Astuce design**
+Mettre une couleur légèrement différente pour attirer l'œil.
+
+---
+
+#### ✅ **5) Ajouter le bouton ‘Voir détails’ (3 minutes)**
+
+📌 **Ce que tu fais**
+
+1. Ajouter un **Button** en bas du Group
+2. Texte : “Voir détails”
+3. Style : Primary button
+4. Action (pas encore, on le fera dans une prochaine séquence)
+
+🎤 Ce que tu dis :
+
+> “Ce bouton servira pour naviguer vers la page ‘Détails formation’.
+> Pour l’instant, il n’a pas encore d’action, mais il doit être présent dans la carte.”
+
+---
+
+#### ✅ **6) Explication des concepts clés (4 minutes)**
+
+🎤 **Tu expliques ceci pendant que tout le monde te regarde :**
+
+##### ✅ 1) **Utilisation des groupes**
+
+> “Chaque carte doit être un Group qui représente un objet ‘Formation’.
+> Cela permet à Bubble de comprendre que tous les champs à l’intérieur sont liés à la même formation.”
+
+##### ✅ 2) **Nombre minimal d’éléments**
+
+> “Dans une carte, il faut aller à l’essentiel :
+> un titre, un organisme, un prix, un bouton.
+> Une carte trop chargée devient illisible.”
+
+##### ✅ 3) **Importance de l’alignement**
+
+> “On garde tout aligné verticalement :
+> titre → organisme → prix → bouton.
+> Cela améliore la lisibilité et permet un meilleur responsive.”
+
+##### ✅ 4) **Notion de réutilisation**
+
+> “Vous créez un template de carte.
+> Plus tard, un Repeating Group va dupliquer automatiquement cette carte pour chaque formation enregistrée.”
+
+🎤 Résumé :
+
+> “Une carte = un conteneur + des textes + un bouton.
+> Bubble réutilisera cette carte automatiquement dans la liste.”
 
 ---
 
