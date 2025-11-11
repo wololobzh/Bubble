@@ -226,12 +226,11 @@ Une fois les pages créées, tu fais le tour pour vérifier.
 
 ---
 
-### **7) Pause ou micro-exercice (5 min)**
+### **7) Pause**
 
 ---
 
-Bien sûr ! Voici une **version développée, détaillée, clé-en-main**, avec ce que tu dois *dire*, *faire* et *montrer* exactement pendant la démo.
-Tu peux littéralement suivre ce script en classe.
+Checker que c'est ok pour tout le monde.
 
 ---
 
