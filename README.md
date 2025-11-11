@@ -437,7 +437,7 @@ Je reste simple et concret, comme si j’étais derrière toi pendant le cours.
 
 ---
 
-## ✅ A. **Changer la largeur minimale (min width)**
+#### ✅ A. **Changer la largeur minimale (min width)**
 
 Objectif : éviter que les éléments se compressent ou explosent en mobile.
 
@@ -461,13 +461,13 @@ Exemples que tu peux faire en live :
 
 ---
 
-## ✅ B. **Comment centrer un élément**
+#### ✅ B. **Comment centrer un élément**
 
 En Bubble New Editor, le centrage passe par le layout.
 
 Voici la démo “parfaite” à faire :
 
-### A. Centrer un élément dans un group
+##### A. Centrer un élément dans un group
 
 1. Clique sur le **Group parent**
 2. Dans **Layout**, vérifie que le mode est :
@@ -479,7 +479,7 @@ Voici la démo “parfaite” à faire :
 
 Boom, ton élément se place au centre direct.
 
-### B. Centrer un élément en pleine page
+##### B. Centrer un élément en pleine page
 
 1. Clique sur la page (oui, toute la page est un container)
 2. Mets **Layout = column**
@@ -493,7 +493,7 @@ Maintenant tout ce que tu mets dedans est centré par défaut.
 
 ---
 
-## ✅ C. **Tester en mobile**
+##### C. **Tester en mobile**
 
 Démo indispensable et très simple.
 
@@ -518,16 +518,16 @@ Tu show :
 
 ---
 
-## ✅ D. Bonus pour impressionner la promo (très utile et simple)
+##### ✅ D. Bonus pour impressionner la promo (très utile et simple)
 
-### ✅ Ajuster la **max width** pour éviter une page trop large
+###### ✅ Ajuster la **max width** pour éviter une page trop large
 
 Dans le Group ou la page :
 
 * **Max width = 100%**
 * Ou fixe-le à 1200px pour faire un contenant “moderne”
 
-### ✅ Activer “Make this element fixed-width” (à utiliser avec modération)
+###### ✅ Activer “Make this element fixed-width” (à utiliser avec modération)
 
 Démontre l’effet :
 
@@ -536,7 +536,7 @@ Démontre l’effet :
 
 ---
 
-## ✅ Petit script que tu peux dire à voix haute (fluide et clair)
+###### ✅ Petit script que tu peux dire à voix haute (fluide et clair)
 
 Tu peux sortir ça tel quel en cours :
 
@@ -662,7 +662,7 @@ Objectifs :
 
 # **🟦 Séquence 3 – Base de données (2h)**
 
-### 🎯 Objectifs
+## 🎯 Objectifs
 
 * Définir les types de données
 * Comprendre la relation Formation → Notes
@@ -720,13 +720,13 @@ Workflow :
 
 Voici comment faire **TP 5 – Formulaire d’ajout** découpé en actions très précises pour Bubble. Tu peux suivre pas à pas à l’écran.
 
-# 🧩 Objectif
+### 🧩 Objectif
 
 Créer un **formulaire** qui ajoute une **Formation** en base, avec validations simples, puis redirige vers la page **benchmark**.
 
 ---
 
-# a) Préparer les champs (Data)
+#### a) Préparer les champs (Data)
 
 > Si tu as déjà créé le type **Formation**, vérifie juste les champs.
 
@@ -749,7 +749,7 @@ Dans **Formation.format**, choisis le type **TrainingFormat** (au lieu de text).
 
 ---
 
-# b) Poser les éléments du formulaire (Design)
+#### b) Poser les éléments du formulaire (Design)
 
 Sur la page **ajouter_formation** :
 
@@ -777,7 +777,7 @@ Sur la page **ajouter_formation** :
 
 ---
 
-# c) Petites validations UX (sans plugin)
+#### c) Petites validations UX (sans plugin)
 
 Sélectionne chaque input et règle :
 
@@ -795,7 +795,7 @@ Sélectionne chaque input et règle :
 
 ---
 
-# d) Workflow de création
+#### d) Workflow de création
 
 1. Onglet **Workflow** → **+ Start/Edit workflow** en cliquant sur `btn_create`.
 2. **Event** : *When Button btn_create is clicked*
@@ -835,7 +835,7 @@ Sélectionne chaque input et règle :
 
 ---
 
-# e) Bonus utiles (faciles)
+#### e) Bonus utiles (faciles)
 
 * **Slug SEO** : après création, ajoute **Action → Make changes to a thing** sur *Result of step 1* → `slug = inp_title's value:slugify`.
 * **Vérifier le lien** : condition “Only when `inp_link's value` contains ‘http’” sinon afficher un Alert d’erreur.
@@ -848,7 +848,7 @@ Sélectionne chaque input et règle :
 
 ---
 
-# f) Tests & debug
+#### f) Tests & debug
 
 * **Preview** la page → remplis → clique.
 * Si rien ne se passe, ouvre **Logs → Step-by-step** depuis le debugger et rejoue le clic pour voir si une condition bloque.
@@ -856,7 +856,7 @@ Sélectionne chaque input et règle :
 
 ---
 
-# g) Récap express (checklist)
+#### g) Récap express (checklist)
 
 * [ ] Inputs posés et nommés (`inp_*`, `dd_*`, `ml_*`)
 * [ ] Validations “should not be empty” et min/max
@@ -872,6 +872,153 @@ Créer un **Repeating Group** :
 
 * Source = “Do a search for Formation”
 * Cell content = la carte créée plus tôt
+
+Super, on fait **TP 6 – Afficher les formations** pas-à-pas. Objectif : lister toutes les *Formation* déjà créées dans la base avec une jolie carte par élément.
+
+---
+
+### Étapes détaillées (≈45 min)
+
+#### 0) Pré-requis rapides (2 min)
+
+* Type de donnée **Formation** existe (titre, organisme, prix, etc.).
+* Tu as déjà une **carte** (group “Group Formation”) dont le **Type of content = Formation** et dont les textes sont dynamiques/vides pour l’instant.
+* Page cible : **benchmark** (ou la page liste).
+
+---
+
+#### 1) Placer un Repeating Group (RG) (5–7 min)
+
+1. Ouvre la page **benchmark**.
+2. **Design → Containers → Repeating Group** (ou “RepeatingGroup”).
+3. Dessine le RG au centre de la page (prends large).
+4. Propriété du RG :
+
+   * **Type of content** : `Formation`
+   * **Layout style** :
+
+     * Débutants : **Full list** (affiche tout, simple)
+     * Ou **Ext. vertical scrolling** (scroll infini)
+   * **Cells** : commence avec **3 colonnes** × **2 lignes** (tu ajusteras).
+   * **Min width cell** : ~280–320 px (selon ta carte).
+5. **Data source** du RG :
+
+   * Clique le champ *Data source* → **Do a search for… → Formation**
+   * (Optionnel) **Sort by** : `title` ou `price` selon ce que tu veux.
+
+> Résultat attendu : ton RG sait “qu’il doit afficher des Formation”.
+
+---
+
+#### 2) Mettre la carte dans la cellule (2 options) (10–12 min)
+
+##### Option A — Tu utilises ta carte *comme un Group* (simple)
+
+1. Clique **une cellule** du RG (double-clic dans la première).
+2. **Add → Container → Group** (si ta carte n’était pas encore posée).
+3. **Type of content** du Group : `Formation`.
+4. **Data source** du Group : `Current cell's Formation`.
+5. Place dedans tes éléments (Titre/Organisme/Prix/Bouton) **et remplace** les textes par des **données dynamiques** :
+
+   * Title → `Parent group's Formation's title`
+   * Organisme → `Parent group's Formation's organisme`
+   * Prix → `Parent group's Formation's price:formatted as…`
+6. Stylise (padding, alignement, radius, shadow).
+
+##### Option B — Tu as fait une **carte réutilisable** (Reusable Element) (clean & DRY)
+
+1. Dans la cellule du RG, **Add → Reusable elements → TaCarteFormation**.
+2. Sélectionne le composant → dans **Data source / Element data** mets :
+
+   * `Current cell's Formation`.
+3. À l’intérieur du Reusable (déjà créé), tous les champs doivent pointer vers **`Parent's thing`** (i.e. la Formation reçue).
+
+> Résultat attendu : une cellule montre la carte avec des données; les autres se rempliront automatiquement.
+
+---
+
+#### 3) Bouton “Voir détails” (workflow) (5–8 min)
+
+1. Sélectionne le **bouton** dans la carte (celui dans la cellule).
+2. **Workflow → Start/Edit workflow**.
+3. **Action → Navigation → Go to page…** : choisis **details_formation**.
+4. **Send data to page** : **Current cell’s Formation** (ou `Parent group's Formation` selon Option A/B).
+5. Sur la page **details_formation**, règle **Type of content = Formation** et lie tes champs à **Current page's Formation**.
+
+---
+
+#### 4) État “liste vide” (2–3 min)
+
+* Clique le RG → **No data source / Empty state** (ou ajoute un **Text** conditionnel) :
+
+  * “Aucune formation pour le moment.”
+  * Condition : *When RepeatingGroup Formation’s list of Formation:count is 0 → this text is visible*.
+
+---
+
+#### 5) Pagination (si tu as choisi “Fixed number of cells”) (5 min)
+
+* Ajoute deux boutons sous le RG : **Précédent** / **Suivant**.
+* Crée un **Custom state** sur la page : `page (number)` par ex., valeur par défaut = 1.
+* **Data source** du RG → `Do a search for Formation :items from ((page-1)*X+1) :items until (page*X)`
+  (X = nb d’éléments par page, ex. 6).
+* Workflow “Suivant” : **Set state page = page+1** (ajoute condition si fin de liste).
+* Workflow “Précédent” : **Set state page = max(1, page-1)**.
+
+*(Si tu as mis “Ext. vertical scrolling”, inutile : Bubble charge au scroll.)*
+
+---
+
+#### 6) Responsive propre (5–7 min)
+
+* Sélectionne le RG → **Layout** :
+
+  * **Row gap / Column gap** pour l’espacement.
+  * Coche **Wrap to previous line** si tu veux que les cartes passent à la ligne quand l’écran rétrécit.
+* Ouvre **Responsive** (icône mobile en haut) :
+
+  * Teste 320–1440px.
+  * Ajuste **min width** de la cellule et **min width** des éléments de la carte pour éviter les chevauchements.
+  * Aligne **center** dans la cellule si besoin.
+
+---
+
+#### 7) Tests (3–5 min)
+
+* Va sur la page **ajouter_formation**, crée 3–5 entrées (ou passe par **Data → App data → Add entry**).
+* **Preview** la page **benchmark**.
+* Vérifie :
+
+  * Les cartes se répètent.
+  * Les textes affichent bien les bonnes valeurs.
+  * Le bouton **Voir détails** envoie vers la bonne page avec la bonne *Formation*.
+  * Le responsive est OK.
+
+---
+
+#### Dépannage rapide
+
+* **Rien ne s’affiche ?**
+
+  * Vérifie **Type of content** du RG = *Formation*.
+  * Vérifie **Data source** = *Do a search for Formation*.
+  * Regarde **Privacy rules** (Data → Privacy) : autorisent-elles la lecture ?
+* **Les champs restent “static” ?**
+
+  * Remplace le texte fixe par **Insert dynamic data** vers `Parent group/Current cell's Formation`.
+* **Le bouton n’emmène pas la bonne fiche ?**
+
+  * Dans le workflow **Go to page**, assure-toi d’envoyer **Current cell’s Formation** (pas la page entière).
+
+---
+
+#### Bonus (si temps)
+
+* **Tri** : ajoute un dropdown “Trier par” (prix, durée, titre) et change le **:sorted by** de la recherche.
+* **Compteur** : Text = `RepeatingGroup Formation's List of Formation:count & " résultats"`.
+
+Si tu bloques sur un point précis (libellé exact de Bubble FR/EN, options manquantes), dis-moi ce que tu vois dans l’IHM et je t’indique le clic exact à faire.
+
 
 ---
 
