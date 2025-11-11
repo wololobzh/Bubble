@@ -248,7 +248,18 @@ Checker que c'est ok pour tout le monde.
 
 ---
 
-#### ✅ **1) Création du Group principal (5 minutes)**
+#### ✅ **1) Créer un Type Formation (5 minutes)**
+
+
+* Va dans l’onglet Data
+* Onglet Data types
+* Clique "Create a new type"
+* Appelle-le Formation
+* Ajoute au moins un champ (ex : “titre” en text)
+
+---
+
+#### ✅ **2) Création du Group principal (5 minutes)**
 
 📌 **Ce que tu fais (à l’écran)**
 
