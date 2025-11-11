@@ -691,6 +691,7 @@ Créer “Note” :
 ### ✅ Erreurs courantes
 
 ❗ Oublier d’appeler les champs en anglais (Bubble préfère)
+
 ❗ Mettre “text” plutôt que “number” pour prix/durée
 
 ---
@@ -716,6 +717,152 @@ Créer :
 Workflow :
 → Create new Formation
 → Go to page “benchmark”
+
+Voici comment faire **TP 5 – Formulaire d’ajout** découpé en actions très précises pour Bubble. Tu peux suivre pas à pas à l’écran.
+
+# 🧩 Objectif
+
+Créer un **formulaire** qui ajoute une **Formation** en base, avec validations simples, puis redirige vers la page **benchmark**.
+
+---
+
+# a) Préparer les champs (Data)
+
+> Si tu as déjà créé le type **Formation**, vérifie juste les champs.
+
+1. Onglet **Data → Data types**
+2. Type **Formation** avec champs :
+
+   * `title` (text)
+   * `provider` (text)
+   * `price` (number)
+   * `duration_hours` (number) *ou* `duration` (text/number, à toi de choisir)
+   * `format` (text **ou** Option set, voir ci-dessous)
+   * `link` (text)
+   * `description` (text, “long text”)
+   * `category` (text) *(servira plus tard avec l’API)*
+
+💡 **Option Set (recommandé) pour `format`**
+Onglet **Data → Option sets → New option set** : `TrainingFormat`
+Options : `Presentiel`, `Distanciel`, `Hybride`
+Dans **Formation.format**, choisis le type **TrainingFormat** (au lieu de text).
+
+---
+
+# b) Poser les éléments du formulaire (Design)
+
+Sur la page **ajouter_formation** :
+
+1. Ajoute un **Group** conteneur (layout = Column, gap 12–16).
+   Renomme : `grp_form_formation`.
+2. Dans ce group, ajoute les inputs :
+
+   * **Input** → placeholder “Titre de la formation” → id : `inp_title`
+   * **Input** → placeholder “Organisme” → id : `inp_provider`
+   * **Input** → placeholder “Prix (en €)” → **Content format = Integer** → id : `inp_price`
+   * **Input** → placeholder “Durée (heures)” → **Content format = Integer** → id : `inp_duration`
+   * **Dropdown** → id : `dd_format`
+
+     * Si **Option set** : *Type of choices* = **TrainingFormat**, *Option caption* = **This Option’s Display**
+     * Si **texte** : *Static choices* = “Présentiel, Distanciel, Hybride”
+   * **Multiline Input** → placeholder “Description” → id : `ml_description`
+   * **Input** → placeholder “Lien (https…)” → id : `inp_link`
+3. Ajoute un **Button** “Créer formation” → id : `btn_create`.
+4. (Optionnel) Ajoute un **Alert** (element) pour afficher un message de succès → id : `al_success`.
+
+**Responsive rapide**
+
+* Sur `grp_form_formation` : width max 600–720px, centré (Container alignment = center).
+* Chaque input : **Fit width** activé, min width ~ 280px.
+
+---
+
+# c) Petites validations UX (sans plugin)
+
+Sélectionne chaque input et règle :
+
+* `inp_title` / `inp_provider` : **This input should not be empty** ✓
+* `inp_price` : **Content format = Integer**, ajoute **Min 0** (dans “Validate the input”).
+* `inp_link` : **Content format = Text** (tu peux ajouter une condition plus tard).
+* `dd_format` : coche **This input should not be empty**.
+
+**Désactiver le bouton tant que ce n’est pas valide**
+
+* Sur `btn_create` → onglet **Conditional** :
+
+  * Condition : `When inp_title's value is empty or inp_provider's value is empty or inp_price's value is empty or dd_format's value is empty`
+  * Propriétés : **This element is disabled** = true, **Opacity** = 0.6.
+
+---
+
+# d) Workflow de création
+
+1. Onglet **Workflow** → **+ Start/Edit workflow** en cliquant sur `btn_create`.
+2. **Event** : *When Button btn_create is clicked*
+   **Only when** *(à droite du déclencheur)* :
+   `inp_title's value is not empty and inp_provider's value is not empty and inp_price's value is not empty and dd_format's value is not empty`
+3. **Action 1 — Data (Things) → Create a new thing**
+
+   * *Type* : **Formation**
+   * Champs → valeurs :
+
+     * `title` = `inp_title's value`
+     * `provider` = `inp_provider's value`
+     * `price` = `inp_price's value`
+     * `duration_hours` = `inp_duration's value`
+     * `format` =
+
+       * si Option set : `dd_format's value`
+       * si texte : `dd_format's value`
+     * `description` = `ml_description's value`
+     * `link` = `inp_link's value`
+4. **Action 2 — Element actions → Show message** (si tu as mis un Alert)
+
+   * `al_success` → message “Formation créée !”
+5. **Action 3 — Reset relevant inputs** (Data → Reset relevant inputs)
+   → vide le formulaire.
+6. **Action 4 — Navigation → Go to page**
+
+   * Page : **benchmark**
+   * (Optionnel) **Send more parameters** :
+
+     * `new` = `yes` (pratique pour afficher un toast sur benchmark)
+
+> Variante : au lieu de l’Action 4, tu peux **envoyer la formation créée** vers une page de détails :
+>
+> * Dans Action 1, clique “Result of step 1”
+> * **Navigation → Go to page details_formation** with **Data to send = Result of step 1**.
+
+---
+
+# e) Bonus utiles (faciles)
+
+* **Slug SEO** : après création, ajoute **Action → Make changes to a thing** sur *Result of step 1* → `slug = inp_title's value:slugify`.
+* **Vérifier le lien** : condition “Only when `inp_link's value` contains ‘http’” sinon afficher un Alert d’erreur.
+* **Réutilisable “FormFormation”** : transforme `grp_form_formation` en **Reusable element** pour avoir le même composant en “Créer” et “Éditer”.
+
+  * Si le Reusable reçoit un **type de contenu = Formation**, alors :
+
+    * Mode **Créer** : *Parent group’s Formation is empty* → bouton = “Créer”.
+    * Mode **Éditer** : pré-remplis **Initial content** des inputs avec *Parent group’s Formation’s…* et workflow = **Make changes to a thing**.
+
+---
+
+# f) Tests & debug
+
+* **Preview** la page → remplis → clique.
+* Si rien ne se passe, ouvre **Logs → Step-by-step** depuis le debugger et rejoue le clic pour voir si une condition bloque.
+* Onglet **Issues** (barre du haut) pour corrections rapides.
+
+---
+
+# g) Récap express (checklist)
+
+* [ ] Inputs posés et nommés (`inp_*`, `dd_*`, `ml_*`)
+* [ ] Validations “should not be empty” et min/max
+* [ ] Bouton désactivé tant que non valide
+* [ ] Workflow “Create a new Formation” + Reset + Go to page
+* [ ] (Bonus) Slug, Alert succès, Reusable pour réutiliser le même formulaire
 
 ---
 
