@@ -289,7 +289,7 @@ Checker que c'est ok pour tout le monde.
 
 ---
 
-#### ✅ **2) Ajouter le titre de la formation (4 minutes)**
+#### ✅ **3) Ajouter le titre de la formation (4 minutes)**
 
 📌 **Ce que tu fais**
 
@@ -309,7 +309,7 @@ Ne mets pas de données dynamiques maintenant, car la base n’existe pas encore
 
 ---
 
-#### ✅ **3) Ajouter l’organisme (2 minutes)**
+#### ✅ **4) Ajouter l’organisme (2 minutes)**
 
 📌 **Ce que tu fais**
 
@@ -324,7 +324,7 @@ Ne mets pas de données dynamiques maintenant, car la base n’existe pas encore
 
 ---
 
-#### ✅ **4) Ajouter le prix (2 minutes)**
+#### ✅ **5) Ajouter le prix (2 minutes)**
 
 📌 **Ce que tu fais**
 
@@ -342,7 +342,7 @@ Mettre une couleur légèrement différente pour attirer l'œil.
 
 ---
 
-#### ✅ **5) Ajouter le bouton ‘Voir détails’ (3 minutes)**
+#### ✅ **6) Ajouter le bouton ‘Voir détails’ (3 minutes)**
 
 📌 **Ce que tu fais**
 
@@ -358,7 +358,17 @@ Mettre une couleur légèrement différente pour attirer l'œil.
 
 ---
 
-#### ✅ **6) Explication des concepts clés (4 minutes)**
+#### ✅ **7) Bien nommer les éléments (4 minutes)**
+
+
+* Clique sur ton élément Text dans la page.
+* Regarde la colonne de droite → c’est le Property Editor.
+* En tout en haut, tu as une zone avec le nom de l’élément (souvent un truc moche genre Text A).
+* Clique dessus et renomme-le comme tu veux, par exemple card_title ou formation_title.
+
+---
+
+#### ✅ **8) Explication des concepts clés (4 minutes)**
 
 🎤 **Tu expliques ceci pendant que tout le monde te regarde :**
 
@@ -421,6 +431,121 @@ Tu montres :
 * Comment changer la largeur minimale
 * Comment centrer
 * Comment tester en mobile
+
+Bien sûr, je te fais ça version “terrain”, clair et actionnable, pour que tu puisses **vraiment faire la démo** devant les apprenants sans galérer.
+Je reste simple et concret, comme si j’étais derrière toi pendant le cours.
+
+---
+
+## ✅ A. **Changer la largeur minimale (min width)**
+
+Objectif : éviter que les éléments se compressent ou explosent en mobile.
+
+Voici comment le montrer :
+
+1. Clique sur un élément (ex : ton Group principal, ta carte ou un texte).
+2. Dans la colonne de droite, tu vas dans l’onglet **Layout**.
+3. Tu cherches la ligne **Min width**.
+4. Tu leur expliques :
+
+   “Min width, c’est la largeur minimum que l’élément peut atteindre quand l’écran devient petit.”
+
+Exemples que tu peux faire en live :
+
+* mettre min width à **0** pour que la carte accepte de se réduire
+* mettre min width à **200px** pour forcer un élément à rester lisible
+* montrer la différence en passant en mode mobile (ça réagit instantanément)
+
+⚡ Tip à dire :
+“Min width à 0 permet un vrai responsive. Min width trop élevé casse tout en mobile.”
+
+---
+
+## ✅ B. **Comment centrer un élément**
+
+En Bubble New Editor, le centrage passe par le layout.
+
+Voici la démo “parfaite” à faire :
+
+### A. Centrer un élément dans un group
+
+1. Clique sur le **Group parent**
+2. Dans **Layout**, vérifie que le mode est :
+   **Row** (pour centrer horizontalement)
+   ou
+   **Column** (pour centrer verticalement)
+3. Dans **Alignment**, choisis :
+   **Center**
+
+Boom, ton élément se place au centre direct.
+
+### B. Centrer un élément en pleine page
+
+1. Clique sur la page (oui, toute la page est un container)
+2. Mets **Layout = column**
+3. Dans Alignment, choisis :
+   **Center**
+
+Maintenant tout ce que tu mets dedans est centré par défaut.
+
+⚡ Phrase que tu peux dire :
+“Bubble centre les choses via le container, pas via l’élément. L’élément n’est jamais responsable de son propre centrage.”
+
+---
+
+## ✅ C. **Tester en mobile**
+
+Démo indispensable et très simple.
+
+Tu show :
+
+1. Le bouton en haut **Responsive mode** (icône d’écran)
+
+2. Une fois dedans, tu peux :
+
+   * glisser la largeur avec la souris
+   * cliquer sur les presets : **mobile, tablette, desktop**
+   * voir les points de rupture (breakpoints)
+
+3. Démo vite fait :
+
+   * Reduis la largeur
+   * Montre comment ta carte ou ton header se réorganise
+   * Montre quand les éléments passent à la ligne
+
+⚡ Tip à dire :
+“Le responsive, c’est juste : comment ta page se comporte quand on serre la largeur.”
+
+---
+
+## ✅ D. Bonus pour impressionner la promo (très utile et simple)
+
+### ✅ Ajuster la **max width** pour éviter une page trop large
+
+Dans le Group ou la page :
+
+* **Max width = 100%**
+* Ou fixe-le à 1200px pour faire un contenant “moderne”
+
+### ✅ Activer “Make this element fixed-width” (à utiliser avec modération)
+
+Démontre l’effet :
+
+* Si coché → l’élément ne se réduit jamais
+* Si décoché → il est responsive
+
+---
+
+## ✅ Petit script que tu peux dire à voix haute (fluide et clair)
+
+Tu peux sortir ça tel quel en cours :
+
+> “Bubble gère le responsive avec trois outils.
+>
+> 1. La largeur minimale, qui dit jusqu’où un élément peut se réduire.
+> 2. Le centrage, qui se fait au niveau du container, pas de l’élément.
+> 3. Le mode responsive, qui permet de voir le résultat en mobile.
+>    Si vous savez manipuler ces trois trucs, vous êtes capables de faire 90 pour cent du responsive sur Bubble.”
 
 ---
 
