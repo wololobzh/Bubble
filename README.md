@@ -1610,3 +1610,137 @@ Teste ton application comme un vrai utilisateur :
 ✅ Une intégration API
 
 ✅ Un site web publié en production
+
+Excellent cours 👏 — ton parcours Bubble sur deux jours est hyper complet et bien structuré.
+Voici **3 TP bonus** que tu peux proposer aux apprenants les plus rapides : chacun exploite une dimension différente de Bubble (UX, base de données avancée, intégrations).
+Ils sont conçus pour **30 à 45 minutes chacun**, selon le niveau du groupe.
+
+---
+
+## 💎 **TP Bonus 1 – Ajouter un système de “favoris” (base de données + UX)**
+
+### 🎯 Objectif
+
+Permettre à l’utilisateur de **“liker” ou “ajouter en favoris”** une formation pour la retrouver plus tard.
+
+### 🧩 Étapes
+
+1. **Créer un nouveau type de données** :
+   *Nom* : `Favori`
+   *Champs* :
+
+   * `formation` (Type = Formation)
+   * `utilisateur` (Type = User)
+
+2. Sur la carte **Formation** :
+   ➜ Ajouter un **icône “❤️” ou “⭐”** (FontAwesome ou Material).
+   ➜ Créer un workflow :
+
+   > *Quand l’icône est cliquée → Create a new Favori → formation = Current cell’s Formation, utilisateur = Current User*
+
+3. (Optionnel) Gérer le toggle :
+
+   * Si le favori existe déjà, le supprimer plutôt que le recréer.
+   * Modifier la couleur de l’icône selon l’état (rempli / vide).
+
+4. **Nouvelle page “Mes favoris”** :
+
+   * Crée une page `favoris`
+   * Repeating Group → `Do a search for Favori`
+
+     * Constraint : `utilisateur = Current User`
+   * Affiche `Favori’s formation’s titre`, `organisme`, `prix`.
+
+👉 **Livrable attendu** : un système fonctionnel où chaque utilisateur peut marquer ses formations préférées et les revoir sur une page dédiée.
+
+---
+
+## 🔍 **TP Bonus 2 – Ajouter un score moyen et des avis (Note & calcul dynamique)**
+
+### 🎯 Objectif
+
+Permettre aux utilisateurs de **noter les formations** et afficher une **moyenne des scores**.
+
+### 🧩 Étapes
+
+1. Vérifie que tu as déjà un type `Note` :
+
+   * `score` (Number)
+   * `commentaire` (Text)
+   * `formation` (Formation)
+   * `utilisateur` (User)
+
+2. Sur la page **details_formation** :
+
+   * Ajoute un **Slider (0–5)** pour la note
+   * Ajoute un **Multiline Input** pour le commentaire
+   * Ajoute un bouton **“Laisser un avis”**
+
+3. Workflow du bouton :
+
+   * Action : *Create a new Note*
+     → score = slider’s value
+     → commentaire = input’s value
+     → formation = Current page’s Formation
+     → utilisateur = Current User
+
+4. Sous la description, affiche :
+
+   * Moyenne des notes :
+
+     > `Search for Note's score:average` avec contrainte `formation = Current page’s Formation`
+   * Liste des commentaires :
+
+     > Repeating Group “Do a search for Note (formation = Current page’s Formation)”
+
+👉 **Livrable attendu** :
+Page “Détails” qui montre la moyenne des avis et les commentaires postés.
+
+---
+
+## 🌐 **TP Bonus 3 – Créer un tableau de bord admin (DataViz + gestion)**
+
+### 🎯 Objectif
+
+Créer une page **admin** avec des statistiques sur les formations.
+
+### 🧩 Étapes
+
+1. **Créer une page “admin”**
+   (réservée au formateur, ou tout utilisateur admin)
+
+2. Ajouter un **Repeating Group** :
+
+   * Source : `Do a search for Formation`
+   * Colonnes : titre, prix, format, catégorie
+
+3. Ajouter des **textes dynamiques statistiques** :
+
+   * `Nombre total de formations : Search for Formation:count`
+   * `Prix moyen : Search for Formation's price:average`
+   * `Catégorie la plus fréquente : Search for Formation's catégorie:grouped by catégorie:first item's catégorie`
+
+4. (Bonus visuel)
+   ➜ Installe le plugin **Chart.js** (ou “Simple Charts”).
+   ➜ Crée un **graphique à barres** :
+
+   * X = catégorie
+   * Y = nombre de formations par catégorie (`grouped by catégorie:count`)
+
+5. (Optionnel)
+   Ajoute un bouton “Exporter en CSV” :
+
+   * Action → *Download data as CSV* sur la liste des formations.
+
+👉 **Livrable attendu** : une page “admin” claire avec quelques KPI et un graphique interactif.
+
+---
+
+## 🎁 Résumé rapide
+
+| TP Bonus                 | Thème                            | Durée estimée | Compétences mobilisées                 |
+| ------------------------ | -------------------------------- | ------------- | -------------------------------------- |
+| 1. Favoris               | Base de données + UI dynamique   | 30–40 min     | Requêtes liées & états conditionnels   |
+| 2. Avis & moyenne        | Calculs & relations entre tables | 45 min        | Recherche, agrégats, workflows         |
+| 3. Tableau de bord admin | DataViz & statistiques           | 45 min        | Grouped by, chart, gestion des données |
+
