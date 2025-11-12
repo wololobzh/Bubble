@@ -126,10 +126,6 @@ Noter les idées au tableau pour structurer la base de données ensuite.
 
 ---
 
-## ✅ ✅ ✅ **CE QUE TU DOIS FAIRE EXACTEMENT**
-
----
-
 ### **1) Introduction (5 min)**
 
 🎤 À dire :
@@ -912,6 +908,8 @@ Super, on fait **TP 6 – Afficher les formations** pas-à-pas. Objectif : liste
 
 #### 2) Mettre la carte dans la cellule (2 options) (10–12 min)
 
+=> En glisser / déposer sur le premier élément
+
 ##### Option A — Tu utilises ta carte *comme un Group* (simple)
 
 1. Clique **une cellule** du RG (double-clic dans la première).
@@ -943,7 +941,7 @@ Super, on fait **TP 6 – Afficher les formations** pas-à-pas. Objectif : liste
 2. **Workflow → Start/Edit workflow**.
 3. **Action → Navigation → Go to page…** : choisis **details_formation**.
 4. **Send data to page** : **Current cell’s Formation** (ou `Parent group's Formation` selon Option A/B).
-5. Sur la page **details_formation**, règle **Type of content = Formation** et lie tes champs à **Current page's Formation**.
+5. Sur la page **details_formation**, règle **Type of content = Formation** et lie tes champs à **Current page's Formation**. 
 
 ---
 
@@ -1065,6 +1063,163 @@ Insister sur :
 
 * “Is empty” pour gérer les filtres optionnels
 * La différence entre :filtered et constraints
+
+Excellent, tu arrives à la partie la plus “magique” de Bubble 💪
+Le **TP7 – Moteur de recherche complet** permet de filtrer dynamiquement les formations selon plusieurs critères (texte, organisme, budget, format).
+Voici **toutes les étapes détaillées** pour que tu puisses le faire sans galérer 👇
+
+---
+
+### 🎯 Objectif du TP
+
+Créer une page (souvent `benchmark`) qui contient :
+
+* des champs de recherche (Input / Dropdown / Slider)
+* un **Repeating Group (RG)** qui affiche les formations
+* un filtrage dynamique selon les valeurs saisies par l’utilisateur
+
+---
+
+### ⚙️ 1️⃣ Préparer la page
+
+Va dans ta page **benchmark** (celle où tu affiches déjà les formations avec un Repeating Group).
+
+Tu dois déjà avoir un RG qui affiche les formations :
+
+> Repeating Group → Type of content : Formation
+> Data source : “Do a search for Formation”
+
+Si tu ne l’as pas encore, crée-le :
+
+1. **Add element → Repeating Group**
+2. Type of content → `Formation`
+3. Data source → `Do a search for Formation`
+4. Dans chaque cellule, insère le **Group Formation** (ou ta carte formation)
+
+---
+
+### ⚙️ 2️⃣ Ajouter les filtres au-dessus du Repeating Group
+
+Ajoute les éléments suivants au-dessus du RG :
+
+| Élément    | Type Bubble | Nom recommandé       | Description                          |
+| ---------- | ----------- | -------------------- | ------------------------------------ |
+| Recherche  | Input       | `input_search`       | pour taper un mot-clé dans le titre  |
+| Organisme  | Dropdown    | `dropdown_organisme` | pour filtrer par organisme           |
+| Budget max | Slider      | `slider_budget`      | pour limiter le prix max             |
+| Format     | Dropdown    | `dropdown_format`    | pour filtrer par format de formation |
+
+#### ➕ Paramétrage de chacun :
+
+##### 🟩 Input “Recherche”
+
+* Placeholder : “Rechercher une formation…”
+* Type : texte normal
+
+##### 🟩 Dropdown “Organisme”
+
+* Type of choices : “Dynamic choices”
+* Type of content : `Formation`
+* Choices source : `Do a search for Formation`
+* Option caption : `Organisme`
+* (tu peux aussi utiliser une “static list” si tu veux les taper à la main)
+
+##### 🟩 Slider “Budget max”
+
+* Valeur min : 0
+* Valeur max : 5000 (ou selon ton jeu de données)
+* Valeur initiale : 2000
+* Nom : `slider_budget`
+
+##### 🟩 Dropdown “Format”
+
+* Type of choices : “Static choices”
+* Choices : Présentiel, Distanciel, Hybride (par ex.)
+* Nom : `dropdown_format`
+
+---
+
+### ⚙️ 3️⃣ Relier les filtres au Repeating Group
+
+Maintenant, on va dire au Repeating Group :
+
+> “Montre-moi toutes les formations qui correspondent aux filtres.”
+
+#### Étape :
+
+1. Clique sur ton **Repeating Group**
+2. Dans **Data source**, clique sur “Insert dynamic data”
+3. Choisis **“Do a search for Formation”**
+4. Clique sur **More** pour ouvrir les “constraints”
+
+---
+
+### ⚙️ 4️⃣ Ajouter les constraints dynamiques
+
+Tu vas ajouter plusieurs conditions (constraints) selon les filtres :
+
+| Champ     | Constraint                               | Exemple                                |
+| --------- | ---------------------------------------- | -------------------------------------- |
+| Titre     | `titre contains input_search's value`    | filtre par mot-clé                     |
+| Organisme | `organisme = dropdown_organisme's value` | filtre si un organisme est sélectionné |
+| Prix      | `prix ≤ slider_budget's value`           | filtre selon le budget                 |
+| Format    | `format = dropdown_format's value`       | filtre par format                      |
+
+⚠️ **Important** : ces constraints doivent être dynamiques, mais si un filtre est vide (ex : aucun organisme sélectionné), Bubble risque d’exclure toutes les données.
+👉 Pour éviter ça, on utilise **“:filtered” + “Advanced filter”** ou bien des “constraints conditionnels”.
+
+---
+
+### ⚙️ 5️⃣ Méthode simple : utiliser `:filtered` avec “Advanced filter”
+
+1. Repeating Group → Data source =
+
+   ```bubble
+   Do a search for Formation:filtered
+   ```
+2. Clique sur “Advanced” dans la fenêtre de filtres.
+3. Ajoute les conditions suivantes :
+
+```bubble
+(this Formation's titre:lowercase contains input_search's value:lowercase)
+and (dropdown_organisme's value is empty or this Formation's organisme = dropdown_organisme's value)
+and (dropdown_format's value is empty or this Formation's format = dropdown_format's value)
+and (slider_budget's value is empty or this Formation's prix ≤ slider_budget's value)
+```
+
+✅ Ce code “logique” veut dire :
+
+> “Montre-moi la formation si elle correspond aux filtres,
+> ou si le filtre est vide, je l’ignore.”
+
+---
+
+### ⚙️ 6️⃣ Tester le moteur de recherche
+
+1. Clique sur **Preview**.
+2. Tape un mot dans “Recherche” → le RG doit se mettre à jour.
+3. Change le Dropdown “Organisme” → le RG doit filtrer.
+4. Déplace le slider “Budget” → le RG se met à jour selon le prix.
+5. Change le “Format” → idem.
+
+Si ça ne se met pas à jour automatiquement :
+
+* coche “This input should cause a search to run automatically”
+* ou ajoute un bouton “Rechercher” qui **“Display list in Repeating Group”** avec la même data source.
+
+---
+
+### 💡 Astuces formateur
+
+✅ “Is empty” → permet d’ignorer un filtre vide.
+✅ “:filtered” → s’exécute côté client, donc plus flexible.
+✅ Pour les performances : si ta base devient grosse, déplace un maximum de conditions dans le “Do a search for …” (côté serveur).
+
+---
+
+Souhaites-tu que je te montre aussi **la version “performante”** (filtrage côté serveur avec conditions dynamiques propres) ?
+Elle est un peu plus technique, mais utile si tu veux aller plus loin.
+
 
 ---
 
