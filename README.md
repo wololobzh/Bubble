@@ -1247,6 +1247,157 @@ Préparation :
 
 ✅ Option de secours : API gratuite (Catégorisation texte)
 
+Parfait 👌 tu veux refaire le **TP8 – Catégorisation automatique via API**, mais **en utilisant Mistral AI à la place d’OpenAI**.
+Très bon réflexe, c’est 100 % faisable — voici **le tutoriel complet pas à pas pour l’intégrer dans Bubble** 👇
+
+---
+
+### 🎯 Objectif
+
+Quand l’utilisateur clique sur **“Analyser catégorie”**,
+→ Bubble envoie le **titre de la formation** à **Mistral AI**,
+→ Mistral répond avec une **catégorie texte**,
+→ cette catégorie est enregistrée dans le champ `catégorie` de la base `Formation`.
+
+---
+
+### 🧩 Étape 1 — Récupérer ta clé API Mistral
+
+1. Va sur : [https://console.mistral.ai](https://console.mistral.ai)
+2. Crée un compte (ou connecte-toi)
+3. Va dans **API Keys → Create new key**
+4. Copie ta clé (ex : `mistral-xxxxx...`)
+
+---
+
+### ⚙️ Étape 2 — Installer et configurer l’API Connector
+
+1. Dans Bubble, ouvre l’onglet **Plugins**
+2. Clique **Add plugins**
+3. Recherche **API Connector**
+4. Clique **Install**
+
+Ensuite :
+
+1. Ouvre **API Connector**
+2. Clique sur **Add another API**
+3. Nomme-la par ex. `Mistral Categorization`
+
+---
+
+### ⚙️ Étape 3 — Créer l’appel API Mistral
+
+Clique sur **Add another call** et configure comme suit 👇
+
+| Champ         | Valeur                                       |
+| ------------- | -------------------------------------------- |
+| **Name**      | `Categorize Formation`                       |
+| **Use as**    | Action                                       |
+| **Data type** | JSON                                         |
+| **Method**    | POST                                         |
+| **URL**       | `https://api.mistral.ai/v1/chat/completions` |
+
+#### Headers :
+
+| Key             | Value                 |
+| --------------- | --------------------- |
+| `Authorization` | `Bearer YOUR_API_KEY` |
+| `Content-Type`  | `application/json`    |
+
+(⚠️ remplace `YOUR_API_KEY` par ta vraie clé)
+
+---
+
+#### Body (JSON) :
+
+```json
+{
+  "model": "mistral-small-latest",
+  "messages": [
+    {
+      "role": "system",
+      "content": "Tu es un assistant qui classe les formations dans une catégorie simple : Développement, Réseau, Cybersécurité, Data, IA, Bureautique, etc."
+    },
+    {
+      "role": "user",
+      "content": "Catégorise cette formation : <titre>"
+    }
+  ],
+  "temperature": 0.3,
+  "max_tokens": 20
+}
+```
+
+✅ Clique sur **Initialize call**
+💡 Quand Bubble te demande un exemple de valeur pour `<titre>`, tu peux taper “Formation Administrateur Réseau”.
+
+Une fois que c’est validé, tu verras une réponse comme :
+
+```json
+{
+  "choices": [
+    {
+      "message": {
+        "content": "Réseau"
+      }
+    }
+  ]
+}
+```
+
+---
+
+### ⚙️ Étape 4 — Créer le bouton “Analyser catégorie”
+
+Sur ta page (ex : `ajouter_formation` ou `details_formation`) :
+
+1. Ajoute un **Button** nommé “Analyser catégorie”
+2. Donne-lui un ID logique : `btn_analyser_categorie`
+
+---
+
+### ⚙️ Étape 5 — Créer le workflow
+
+1. Sélectionne ton bouton → **Start/Edit workflow**
+2. Clique **Add an action**
+3. Va dans **Plugins → Mistral Categorization → Categorize Formation**
+4. Dans le champ `titre`, insère la donnée dynamique :
+   `Current Formation's titre`
+
+🧠 (Bubble enverra automatiquement le texte du titre de la formation à l’API.)
+
+---
+
+### ⚙️ Étape 6 — Utiliser le résultat
+
+Juste après, ajoute une autre action :
+
+1. **Data → Make changes to a thing**
+2. Thing to change → `Current Formation`
+3. Nouveau champ :
+
+   * `Catégorie = Result of step 1 (Categorize Formation)'s choices:first item's message:content`
+
+💡 Cela enregistre le texte renvoyé par Mistral (ex. “Cybersécurité”) dans la base.
+
+---
+
+### ✅ Étape 7 — Tester le tout
+
+1. Lance le **Preview**
+2. Va sur une formation
+3. Clique “Analyser catégorie”
+4. Attends 1–2 secondes → la catégorie se remplit dans ta base
+
+---
+
+### 💡 Astuce bonus
+
+Tu peux aussi :
+
+* afficher un **Alert “Catégorie mise à jour !”** à la fin du workflow
+* ou bien **mettre un loader (popup)** pendant l’appel API (via condition `When API call is loading`)
+
 ---
 
 # **🟦 Séquence 7 – Tests, debug & déploiement (2h)**
@@ -1273,9 +1424,171 @@ Actions :
 
 ✅ Tester le lien public
 
+Parfait 👏 tu arrives au **dernier TP de ton atelier Bubble : la mise en production !**
+C’est une étape super importante, car elle te fait passer d’une **application “en développement”** à une **application publique**, que n’importe qui peut utiliser depuis un lien web.
+
+Voici le déroulé **étape par étape, sans rien oublier** 👇
+
 ---
 
-# ✅ **Fin de Partie III — Livrables attendus**
+## 🎯 Objectif du TP 9
+
+À la fin de cette séquence, tu sauras :
+
+* tester ton app dans différents modes (preview, debug)
+* sécuriser tes données avec des “Privacy rules”
+* publier ton application Bubble
+* vérifier que ton lien public fonctionne correctement
+
+---
+
+### 🧩 **1️⃣ Preview – Tester ton app en mode apprenant**
+
+#### ▶️ Comment faire
+
+Dans l’éditeur Bubble :
+
+* En haut à droite, clique sur le bouton **Preview**
+* Ou appuie sur **Ctrl + P (Windows)** ou **Cmd + P (Mac)**
+
+Cela ouvre ton app dans une nouvelle fenêtre avec une URL du type :
+
+```
+https://tonapp.bubbleapps.io/version-test/benchmark
+```
+
+#### 💡 À faire :
+
+* Vérifie que tout s’affiche correctement
+* Teste tes formulaires, workflows, filtres
+* Ajoute et supprime une formation pour t’assurer que tout marche
+
+---
+
+### 🔍 **2️⃣ Debug Mode – Voir ce qui se passe “sous le capot”**
+
+Bubble dispose d’un outil de **debug visuel** super utile.
+
+#### ▶️ Comment l’activer
+
+* Dans l’URL de ton app, ajoute `?debug_mode=true` à la fin, par exemple :
+
+  ```
+  https://tonapp.bubbleapps.io/version-test/benchmark?debug_mode=true
+  ```
+
+#### 🧠 Ce que ça permet :
+
+* Voir **toutes les actions** qui se déclenchent en temps réel (workflows)
+* Inspecter les **données dynamiques** (ex. ce que contient un champ)
+* Mettre le **mode “Step by step”** pour exécuter ton workflow lentement
+
+#### 💡 À tester :
+
+1. Clique sur un bouton (ex. “Créer formation”)
+2. Ouvre la barre du bas → clique sur **Step by step**
+3. Tu verras chaque étape s’exécuter et les valeurs associées
+
+C’est parfait pour comprendre **pourquoi un workflow ne marche pas** ou pourquoi une donnée est vide.
+
+---
+
+### 🔒 **3️⃣ Privacy Rules – Sécuriser ta base de données**
+
+Par défaut, **toutes les données Bubble sont publiques** 😱 (si ton app est publiée).
+Il faut donc définir des **règles de confidentialité**.
+
+#### ▶️ Comment faire
+
+1. Va dans **Data → Privacy**
+2. Sélectionne le type de données **Formation**
+3. Clique sur **Add a new rule**
+
+#### Exemple de règles :
+
+| Condition       | Autorisation                                                          |
+| --------------- | --------------------------------------------------------------------- |
+| *Tout le monde* | Peut voir seulement les champs “titre”, “organisme”, “prix”, “format” |
+| *Créateur*      | Peut modifier et supprimer                                            |
+
+#### Pour faire ça :
+
+1. Coche **Everyone else** → autorise uniquement “View all fields”
+2. Décoche “Modify” et “Delete”
+3. Ajoute une autre règle :
+
+   * Condition : `This Formation's Creator is Current User`
+   * Coche “View”, “Modify”, “Delete”
+
+💡 **Astuce** : si tu veux être prudent, commence par interdire tout, puis ajoute les permissions nécessaires.
+
+---
+
+### 🌍 **4️⃣ Publish – Mettre ton app en ligne**
+
+C’est le moment de vérité 😄
+
+#### ▶️ Étapes :
+
+1. Clique sur le bouton **Deploy** en haut à droite (icône fusée 🚀)
+2. Dans la fenêtre qui s’ouvre :
+
+   * Vérifie que tu déploies **de version-test → live**
+   * Clique sur **Deploy current version to live**
+3. Bubble va publier ton app en ligne sur une URL du type :
+
+   ```
+   https://tonapp.bubbleapps.io
+   ```
+
+💡 Si tu veux ton **propre nom de domaine** :
+
+* Va dans **Settings → Domain / email**
+* Clique sur “Set up your domain”
+* Suis les instructions pour relier ton nom de domaine (ex. `monapp.fr`)
+
+---
+
+### 🔗 **5️⃣ Tester le lien public**
+
+Va sur :
+
+```
+https://tonapp.bubbleapps.io
+```
+
+Teste ton application comme un vrai utilisateur :
+
+* Ouvre le lien dans un autre navigateur (ou une session privée)
+* Vérifie que la navigation fonctionne
+* Vérifie qu’on ne peut pas modifier/supprimer des formations sans autorisation
+* Si tu utilises une API (comme Mistral), teste qu’elle fonctionne aussi en version live
+
+---
+
+### ✅ **Check-list finale du TP 9**
+
+| Étape            | Action                             | OK |
+| ---------------- | ---------------------------------- | -- |
+| 🔍 Preview       | L’app fonctionne en mode test      | ☐  |
+| 🪄 Debug         | Tu as vérifié les workflows        | ☐  |
+| 🔒 Privacy rules | Les données sont sécurisées        | ☐  |
+| 🚀 Publish       | L’app est déployée en version live | ☐  |
+| 🌐 Test public   | Le lien public fonctionne bien     | ☐  |
+
+---
+
+### 🧠 Bonus : astuces de formateur
+
+* Avant de publier, demande aux apprenants :
+
+  > “Est-ce que vous seriez prêts à partager votre lien public ?”
+* Encourage-les à tester depuis leur téléphone (responsive !)
+* Rappelle qu’ils peuvent revenir en “version-test” pour faire des modifs sans casser la prod
+
+---
+
+## ✅ **Fin de Partie III — Livrables attendus**
 
 * Application entièrement fonctionnelle
 * API intégrée
@@ -1284,7 +1597,7 @@ Actions :
 
 ---
 
-# ✅ **Conclusion formateur**
+## ✅ **Conclusion formateur**
 
 À la fin de ce module, les apprenants auront réalisé :
 
