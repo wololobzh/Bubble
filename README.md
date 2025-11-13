@@ -1,10 +1,10 @@
-# 🎓 **GUIDE FORMATEUR – Atelier Bubble (14h)**
+# 🎓 **Atelier Bubble (14h)**
 
 **Projet fil rouge** : Application de benchmark des offres de formation informatique.
 
 ---
 
-# ✅ **0. Préparation formateur (avant le cours)**
+# ✅ **0. Préparation**
 
 ### ✅ Créer ton propre environnement Bubble
 
@@ -19,8 +19,8 @@ Créer un projet “Benchmark Demo”.
 
 ### ✅ Ressources à préparer
 
-* Une fiche “exemple de formation” (pour tester le formulaire)
-* Une clé API OpenAI (ou alternative)
+* Une fiche “exemple de formation”
+* Une clé API Mistral IA (ou alternative)
 * Un fichier Excel avec des fomations (pour tests filtres)
 
 ---
