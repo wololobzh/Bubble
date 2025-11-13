@@ -1266,7 +1266,7 @@ Quand l’utilisateur clique sur **“Analyser catégorie”**,
 1. Va sur : [https://console.mistral.ai](https://console.mistral.ai)
 2. Crée un compte (ou connecte-toi)
 3. Va dans **API Keys → Create new key**
-4. Copie ta clé (ex : `mistral-xxxxx...`)
+4. Copie ta clé (ex : `mistral-xxxxx...` ou `vAhexMjfygoJGO3rIcjIua8dygdqWT2d`)
 
 ---
 
